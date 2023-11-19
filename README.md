@@ -71,6 +71,7 @@ Apr 2019 - Mar 2020 (1 year)
 - R (Programming Language)
 - React.js
 - Data Science
+- Tensor Flow
 - Microsoft SQL Server
 - Bioinformatics
 - Computational Biology
