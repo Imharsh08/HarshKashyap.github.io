@@ -4,7 +4,7 @@
 Meerut, Uttar Pradesh, India
 Email: imharsh080@gmail.com
 Phone: 7351***994
-LinkedIn: [linkedin.com/in/harsh-kashyap-bioinformatics](https://linkedin.com/in/harsh-kashyap-eda)
+LinkedIn: [linkedin.com/in/harsh-kashyap-eda](https://linkedin.com/in/harsh-kashyap-eda)
 
 ## Summary
 I have experience working with big data and extensive knowledge of bioinformatics and genomics tools. Additionally, I am proficient in programming languages such as PHP, Perl, and C++.
