@@ -15,6 +15,11 @@ Department of Excise Uttar Pradesh
 Apr 2020 - Present (3 years 7 months)  
 - Worked at CL2 Virender Kumar Meerut under Department of Excise Uttar Pradesh.
 
+**Data Science Intern**  
+Oasys Infobyte  
+Oct 2023 - Nov 2023 (1 months)  
+- Learn about live ML projects and training the models using python and machine learning on Jupiter notebook.
+
 **Ex-Bioinformatics Intern**  
 BioTecNika  
 May 2023 - Jul 2023 (3 months)
