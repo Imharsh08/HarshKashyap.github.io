@@ -3,7 +3,7 @@
 # Harsh Kashyap
 Meerut, Uttar Pradesh, India
 Email: imharsh080@gmail.com
-Phone: 7351534994
+Phone: 7351***994
 LinkedIn: [linkedin.com/in/harsh-kashyap-bioinformatics](https://linkedin.com/in/harsh-kashyap-bioinformatics)
 
 ## Summary
