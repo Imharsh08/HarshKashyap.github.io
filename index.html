@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Harsh Kashyap | Data Analyst & Web App Developer</title>
+  <title>Harsh Kashyap | Data & Web Professional</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Adjust based on nav height */
+    }
     body {
       font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
       background: #f7fafc;
@@ -16,7 +20,7 @@
       background: #234080;
       color: #fff;
       text-align: center;
-      padding: 2rem 0 1rem 0;
+      padding: 2rem 1rem;
     }
     header h1 {
       font-size: 2.5rem;
@@ -44,6 +48,27 @@
       color: #bdbdbd;
       margin: 0 0.5em;
     }
+    #navbar {
+        background: #ffffff;
+        padding: 0.8rem 1rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        border-bottom: 1px solid #e5e7eb;
+    }
+    #navbar a {
+        color: #234080;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 0 1.2rem;
+        font-size: 1.1em;
+        transition: color 0.3s;
+    }
+    #navbar a:hover {
+        color: #1b3263;
+    }
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -54,13 +79,14 @@
     }
     section {
       margin-bottom: 2.2rem;
+      padding-top: 20px; /* Padding for nav offset */
     }
     h2 {
       color: #234080;
-      margin-bottom: 0.7em;
+      margin-bottom: 0.8em;
       font-size: 1.4em;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 0.18em;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.25em;
       font-weight: 600;
     }
     table {
@@ -70,47 +96,33 @@
       font-size: 1em;
     }
     th, td {
-      padding: 0.7em 0.5em;
+      padding: 0.8em 0.5em;
       border-bottom: 1px solid #e0e0e0;
       text-align: left;
+      vertical-align: top;
     }
     th {
       background: #f3f6fa;
       color: #234080;
       font-weight: 600;
+      white-space: nowrap;
     }
-    ul, li {
+    td ul { margin-top: 0; }
+    ul {
       margin: 0.4em 0 0.4em 1em;
       padding: 0;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     .badge-list img {
       height: 28px;
-      border-radius: 8px;
       margin: 0.25em 0.4em 0.25em 0;
       vertical-align: middle;
-    }
-    .roles {
-      display: flex;
-      gap: 1.2em;
-      flex-wrap: wrap;
-      margin: 1em 0 2em 0;
-      justify-content: center;
-    }
-    .role {
-      background: #f3f6fa;
-      border-radius: 7px;
-      padding: 0.7em 1.2em;
-      font-weight: 600;
-      color: #234080;
-      font-size: 1.08em;
-      box-shadow: 0 2px 10px rgba(35,64,128,0.05);
-      letter-spacing: .5px;
     }
     .summary {
       font-size: 1.09em;
       color: #374151;
       margin-bottom: 1.2em;
+      line-height: 1.6;
     }
     footer {
       text-align: center;
@@ -121,10 +133,83 @@
       font-size: 1em;
       margin-top: 2em;
     }
+    .skill-keyword {
+      transition: background 0.3s ease-in-out;
+      border-radius: 4px;
+      padding: 0.1em 0.2em;
+    }
+    .skill-keyword.highlight {
+      background: #fff38a;
+      box-shadow: 0 2px 8px rgba(35,64,128,0.10);
+    }
+    #skillSearchContainer {
+        position: relative;
+        max-width: 500px;
+        margin: auto;
+    }
+    #skillSearch {
+      width: 100%;
+      padding: 0.8em 1em;
+      font-size: 1.1em;
+      border: 2px solid #234080;
+      border-radius: 8px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 8px rgba(35,64,128,0.05);
+    }
+    #placeholderAnim {
+        position: absolute;
+        top: 50%;
+        left: 1em;
+        transform: translateY(-50%);
+        color: #888;
+        font-size: 1.1em;
+        pointer-events: none;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+    #autocompleteList {
+      list-style: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 105%;
+      background: #fff;
+      border: 1px solid #e3e6ea;
+      border-radius: 7px;
+      box-shadow: 0 4px 12px rgba(35,64,128,0.1);
+      padding: 0;
+      margin: 0;
+      z-index: 10;
+      display: none;
+    }
+     #autocompleteList li {
+      padding: 0.7em 1em;
+      cursor: pointer;
+     }
+     #autocompleteList li:hover {
+        background: #f3f6fa;
+     }
+
+    @media (max-width: 768px) {
+        html { scroll-padding-top: 60px; }
+        #navbar {
+            padding: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        #navbar a {
+            margin: 0 0.8rem;
+            font-size: 1em;
+        }
+    }
+
     @media (max-width: 600px) {
-      main { padding: 1em; }
-      th, td { font-size: 0.97em; }
-      .badge-list img { height: 22px; }
+      main { padding: 1.5rem 1rem; }
+      header { padding: 1.5rem 1rem; }
+      header h1 { font-size: 2rem; }
+      .subtitle { font-size: 1.1rem; }
+      th, td { font-size: 0.95em; }
     }
   </style>
 </head>
@@ -144,30 +229,33 @@
       <a href="https://github.com/Imharsh08/HarshKashyap.github.io" target="_blank">Portfolio</a>
     </div>
   </header>
-  <main>
-    <section>
-      <div class="roles">
-        <span class="role">Data Analyst</span>
-        <span class="role">MIS Executive</span>
-        <span class="role">Business Analyst</span>
-        <span class="role">Web App Developer</span>
-      </div>
+
+  <nav id="navbar">
+    <a href="#summary">Summary</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main id="portfolio-content">
+    <section id="summary">
+      <h2>Professional Summary</h2>
       <div class="summary">
-        Results-driven professional with 4+ years of experience in government analytics, scientific research, manufacturing, and education sectors. Adept at transforming raw data into actionable insights, developing interactive dashboards, and building web applications to streamline business processes. Proven ability to bridge the gap between technical and business teams, leveraging tools such as Python, SQL, R, and BI platforms to solve real-world problems and drive organizational growth.
+        Results-driven professional with 6+ years of experience in government analytics, scientific research, manufacturing, and education sectors. Adept at transforming raw data into actionable insights, developing interactive <span class="skill-keyword">dashboards</span>, and building <span class="skill-keyword">web applications</span> to streamline business processes. Proven ability to bridge the gap between technical and business teams, leveraging tools such as <span class="skill-keyword">Python</span>, <span class="skill-keyword">SQL</span>, <span class="skill-keyword">R</span>, and <span class="skill-keyword">BI platforms</span> to solve real-world problems and drive organizational growth.
       </div>
     </section>
-    <section>
-  <h2>Search My Skills</h2>
-  <div style="position:relative;max-width:400px;margin:auto;">
-    <input id="skillSearch" type="text" placeholder="Type to search skills..." 
-      style="width:100%;padding:0.8em 1em;font-size:1.1em;border:2px solid #234080;border-radius:8px;box-shadow:0 2px 8px rgba(35,64,128,0.05);margin-bottom:0;" autocomplete="off">
-    <ul id="autocompleteList" style="list-style:none;position:absolute;left:0;right:0;top:110%;background:#fff;border:1px solid #e3e6ea;border-radius:7px;box-shadow:0 2px 12px rgba(35,64,128,0.07);padding:0;margin:0;z-index:10;display:none;"></ul>
-    <!-- Animated placeholder -->
-    <div id="placeholderAnim" style="position:absolute;bottom:12px;left:14px;font-size:1.07em;color:#234080;pointer-events:none;transition:bottom 0.7s;">
-    </div>
-  </div>
-</section>
-    <section>
+
+    <section id="skill-search">
+        <h2>Search My Skills</h2>
+        <div id="skillSearchContainer">
+            <input id="skillSearch" type="text" placeholder="" autocomplete="off">
+            <div id="placeholderAnim"></div>
+            <ul id="autocompleteList"></ul>
+        </div>
+    </section>
+
+    <section id="experience">
       <h2>Professional Experience</h2>
       <table>
         <thead>
@@ -180,68 +268,82 @@
         </thead>
         <tbody>
           <tr>
-            <td>Data Analyst</td>
-            <td>Dept. of Excise, Uttar Pradesh</td>
-            <td>Apr 2020 – Present</td>
-            <td>Led analytics for sales operations, improved reporting transparency by 85%</td>
-          </tr>
-          <tr>
-            <td>MIS/Data Analyst</td>
+            <td><strong>MIS/Data Analyst</strong></td>
             <td>Mangla Rubber Technologies</td>
-            <td>Mar 2025 – Present</td>
-            <td>Developed Looker Studio dashboards, ERP-integrated web applications</td>
+            <td>Apr 2025 – Present</td>
+            <td>
+                <ul>
+                    <li>Engineered dynamic <span class="skill-keyword">dashboards</span> in <span class="skill-keyword">Looker Studio</span> and developed <span class="skill-keyword">ERP-integrated</span> <span class="skill-keyword">web applications</span>.</li>
+                    <li>Utilized <span class="skill-keyword">React</span> and <span class="skill-keyword">Python</span> to enhance data accessibility for production and supply chain teams.</li>
+                </ul>
+            </td>
           </tr>
           <tr>
-            <td>Business Analyst (Faculty)</td>
+            <td><strong>Business Analyst (Faculty)</strong></td>
             <td>Gurukul Dev Rishi School, Meerut</td>
             <td>Apr 2024 – Mar 2025</td>
-            <td>Streamlined academic MIS, led CBSE affiliation documentation</td>
+            <td>
+                <ul>
+                    <li>Streamlined academic <span class="skill-keyword">MIS</span> reporting and data management processes.</li>
+                    <li>Led the documentation and data strategy for a successful CBSE affiliation.</li>
+                </ul>
+            </td>
           </tr>
           <tr>
-            <td>Database Administrator</td>
-            <td>Simbhaoli Sugars Ltd.</td>
-            <td>Apr 2019 – Mar 2020</td>
-            <td>Managed ERP-linked databases and business reporting</td>
-          </tr>
-          <tr>
-            <td>Area Sales Manager</td>
+            <td><strong>Area Sales Manager</strong><br><em>(Concurrent Role)</em></td>
             <td>K12 Techno Services Pvt. Ltd.</td>
             <td>Jul 2021 – Sep 2022</td>
-            <td>Analyzed regional sales data, improved client engagement strategies</td>
+            <td>
+                 <ul>
+                    <li>Analyzed regional sales data to identify key growth opportunities.</li>
+                    <li>Contributed to a 15% improvement in client engagement strategies through data-driven insights.</li>
+                </ul>
+            </td>
+          </tr>
+           <tr>
+            <td><strong>Data Analyst</strong></td>
+            <td>Dept. of Excise, Uttar Pradesh</td>
+            <td>Apr 2020 – Mar 2024</td>
+            <td>
+                <ul>
+                    <li>Led <span class="skill-keyword">data analysis</span> for state-wide sales operations.</li>
+                    <li>Developed automated reports using <span class="skill-keyword">SQL</span> and advanced <span class="skill-keyword">Excel</span>, improving reporting transparency by 85%.</li>
+                </ul>
+            </td>
           </tr>
           <tr>
-            <td>Bioinformatics/Data Science Intern</td>
-            <td>BioTecNika Info Labs Pvt. Ltd. / Oasis Infobyte</td>
-            <td>2023</td>
-            <td>Built predictive models, NGS pipelines, and AI-driven data curation</td>
+            <td><strong>Database Administrator</strong></td>
+            <td>Simbhaoli Sugars Ltd.</td>
+            <td>Apr 2019 – Mar 2020</td>
+            <td>
+                <ul>
+                    <li>Managed and maintained <span class="skill-keyword">ERP</span>-linked <span class="skill-keyword">SQL</span> databases for a large-scale manufacturing unit.</li>
+                    <li>Generated regular <span class="skill-keyword">business intelligence</span> reports to support management decisions.</li>
+                </ul>
+            </td>
           </tr>
         </tbody>
       </table>
     </section>
-    <section>
-      <h2>Education</h2>
-      <ul>
+    
+    <section id="education">
+      <h2>Education & Internships</h2>
+       <ul>
         <li>
           <strong>M.Sc. Bioinformatics &amp; Comp. Biology</strong>, Chaudhary Charan Singh University (2021–2023)<br>
           <em>Second Rank | 77% | Thesis: AI Virtual Assistant for Research Analysis</em>
+        </li>
+        <li>
+          <strong>Bioinformatics/Data Science Intern</strong> at BioTecNika &amp; Oasis Infobyte (During M.Sc. – 2023)<br>
+          <em>Gained hands-on experience in building predictive models using <span class="skill-keyword">Python</span>, analyzing NGS data, and developing an AI-driven data curation tool.</em>
         </li>
         <li>
           <strong>B.Sc. Mathematics &amp; Computer Science</strong>, CCS University (2018–2021)
         </li>
       </ul>
     </section>
-    <section>
-      <h2>Certifications</h2>
-      <ul>
-        <li>Data Science — Oasis Infobyte</li>
-        <li>SQL for Data Science — Scaler</li>
-        <li>Business Analytics (Excel) — Johns Hopkins University</li>
-        <li>Tableau Specialization &amp; Advanced Excel — Jobaaj</li>
-        <li>Bacterial Genome Assembly — ECDC</li>
-        <li>CRISPR, Microscopy — BioTecNika Labs</li>
-      </ul>
-    </section>
-    <section>
+
+    <section id="skills">
       <h2>Technical Skills</h2>
       <div class="badge-list">
         <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
@@ -251,60 +353,52 @@
         <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI">
         <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white" alt="Tableau">
         <img src="https://img.shields.io/badge/Looker%20Studio-4285F4?style=for-the-badge&logo=googleanalytics&logoColor=white" alt="Looker Studio">
+        <img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white" alt="Excel">
         <img src="https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="MS SQL Server">
         <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
         <img src="https://img.shields.io/badge/ERP-607D8B?style=for-the-badge" alt="ERP">
         <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
       </div>
       <ul>
-        <li><strong>Data Analytics:</strong> Advanced data analysis, visualization, and reporting</li>
-        <li><strong>MIS & ERP:</strong> Business intelligence, process automation, ERP integration</li>
-        <li><strong>Development:</strong> Python, JavaScript, SQL, R, PHP, React</li>
-        <li><strong>BI Tools:</strong> Power BI, Tableau, Looker Studio, MS SQL Server</li>
-        <li><strong>Web Apps:</strong> Dashboard and reporting web applications</li>
+        <li><strong><span class="skill-keyword">Data Analytics</span>:</strong> Advanced <span class="skill-keyword">data analysis</span>, visualization, statistical modeling, and <span class="skill-keyword">reporting</span>.</li>
+        <li><strong><span class="skill-keyword">MIS</span> & <span class="skill-keyword">ERP</span>:</strong> <span class="skill-keyword">Business intelligence</span>, process automation, <span class="skill-keyword">ERP integration</span>, and data management.</li>
+        <li><strong>Development:</strong> <span class="skill-keyword">Python</span> (Pandas, NumPy), <span class="skill-keyword">JavaScript</span> (<span class="skill-keyword">React</span>), <span class="skill-keyword">SQL</span>, <span class="skill-keyword">R</span>, <span class="skill-keyword">PHP</span>.</li>
+        <li><strong><span class="skill-keyword">BI Tools</span>:</strong> <span class="skill-keyword">Power BI</span>, <span class="skill-keyword">Tableau</span>, <span class="skill-keyword">Looker Studio</span>, <span class="skill-keyword">MS SQL Server</span>, Advanced <span class="skill-keyword">Excel</span>.</li>
+        <li><strong>Web Apps:</strong> Interactive <span class="skill-keyword">Dashboard</span> and reporting <span class="skill-keyword">web applications</span>.</li>
       </ul>
     </section>
-    <section>
+
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li>Data Science — Oasis Infobyte</li>
+        <li><span class="skill-keyword">SQL</span> for Data Science — Scaler</li>
+        <li><span class="skill-keyword">Business Analytics</span> (<span class="skill-keyword">Excel</span>) — Johns Hopkins University</li>
+        <li><span class="skill-keyword">Tableau</span> Specialization & Advanced <span class="skill-keyword">Excel</span> — Jobaaj</li>
+        <li>Bacterial Genome Assembly — ECDC</li>
+      </ul>
+    </section>
+    
+    <section id="projects">
       <h2>Projects & Publications</h2>
       <ul>
         <li>
           <strong>AI Virtual Assistant for Research Analysis</strong> — Thesis<br>
-          Developed a Botpress-powered assistant for streamlining bioinformatics data navigation.
+          Developed a Botpress-powered assistant for streamlining <span class="skill-keyword">bioinformatics data</span> navigation and analysis.
         </li>
         <li>
-          <strong>Sales & Operations Dashboards</strong> — Dept. of Excise, Mangla Rubber<br>
-          Automated reporting and visualization pipelines for business operations.
+          <strong>Sales & Operations <span class="skill-keyword">Dashboards</span></strong> — Dept. of Excise, Mangla Rubber<br>
+          Designed and implemented automated <span class="skill-keyword">reporting</span> and visualization pipelines for key business operations.
         </li>
         <li>
           <strong>Research Publication:</strong> <i>Antimycobacterial Screening of Derris indica</i> (<a href="http://dx.doi.org/10.13005/bbra/3142" target="_blank">Journal Link</a>)
         </li>
-        <li>
-          <strong>Portfolio & Blog:</strong> <a href="https://github.com/Imharsh08/HarshKashyap.github.io" target="_blank">GitHub Portfolio</a>
-        </li>
       </ul>
     </section>
-    <section>
-      <h2>Languages</h2>
-      <div class="badge-list">
-        <img src="https://img.shields.io/badge/Hindi-Native-blue?style=for-the-badge" alt="Hindi">
-        <img src="https://img.shields.io/badge/English-Professional-green?style=for-the-badge" alt="English">
-        <img src="https://img.shields.io/badge/Urdu-Intermediate-orange?style=for-the-badge" alt="Urdu">
-        <img src="https://img.shields.io/badge/French-Beginner-lightgrey?style=for-the-badge" alt="French">
-      </div>
-    </section>
-    <section>
-      <h2>Professional Interests</h2>
-      <ul>
-        <li>Business Intelligence &amp; Analytics</li>
-        <li>MIS &amp; Process Automation</li>
-        <li>Web Application Development</li>
-        <li>Data-Driven Decision Making</li>
-        <li>Research Collaboration &amp; Documentation</li>
-      </ul>
-    </section>
-    <section>
+
+    <section id="contact">
       <h2>Contact & Collaboration</h2>
-      <div style="text-align:center; font-size:1.1em;">
+      <div style="text-align:center; font-size:1.1em; line-height:1.6;">
         Open to freelance analytics, web app projects, business process improvement, and research collaborations.<br>
         <strong>Let’s connect and create impactful solutions!</strong>
       </div>
@@ -313,68 +407,116 @@
   <footer>
     &copy; 2025 Harsh Kashyap. Professional Portfolio.
   </footer>
-  <script>
-const skills = [
-  "Python", "SQL", "R", "JavaScript", "Power BI", "Tableau", "Looker Studio",
-  "Data Analysis", "MIS", "Business Analytics", "Web App Development",
-  "React", "ERP Integration", "Reporting Automation", "Git", "Dashboard Design"
-];
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Skill Search and Animation Logic ---
+    const skills = [
+        "Python", "SQL", "R", "JavaScript", "Power BI", "Tableau", "Looker Studio", "Excel",
+        "Data Analysis", "MIS", "Business Analytics", "Web App Development",
+        "React", "ERP", "Reporting", "Dashboard", "Git"
+    ];
 
-// Animated placeholder cycling
-const placeholderAnim = document.getElementById('placeholderAnim');
-const searchInput = document.getElementById('skillSearch');
-let skillIndex = 0;
-function showNextSkill() {
-  placeholderAnim.textContent = skills[skillIndex];
-  placeholderAnim.style.bottom = '-32px';
-  setTimeout(() => {
-    placeholderAnim.style.bottom = '12px';
-  }, 50);
-  skillIndex = (skillIndex + 1) % skills.length;
-}
-setInterval(showNextSkill, 1700);
-showNextSkill();
+    const searchInput = document.getElementById('skillSearch');
+    const autocompleteList = document.getElementById('autocompleteList');
+    const allKeywords = document.querySelectorAll('.skill-keyword');
+    const placeholderAnim = document.getElementById('placeholderAnim');
+    let skillIndex = 0;
+    let placeholderInterval;
 
-// Hide placeholder when typing/focused, show otherwise
-searchInput.addEventListener('focus', () => placeholderAnim.style.display = 'none');
-searchInput.addEventListener('blur', () => placeholderAnim.style.display = searchInput.value ? 'none' : 'block');
-searchInput.addEventListener('input', () => placeholderAnim.style.display = searchInput.value ? 'none' : 'block');
+    function animatePlaceholder() {
+        if (!placeholderAnim) return;
+        placeholderAnim.style.opacity = '0';
+        placeholderAnim.style.transform = 'translateY(-50%) translateX(10px)';
+        setTimeout(() => {
+            skillIndex = (skillIndex + 1) % skills.length;
+            placeholderAnim.textContent = `Search for "${skills[skillIndex]}"`;
+            placeholderAnim.style.transform = 'translateY(-50%) translateX(0)';
+            placeholderAnim.style.opacity = '1';
+        }, 300);
+    }
 
-// Autocomplete logic
-const autocompleteList = document.getElementById('autocompleteList');
-searchInput.addEventListener('input', function() {
-  const val = this.value.trim().toLowerCase();
-  autocompleteList.innerHTML = '';
-  if (!val) {
-    autocompleteList.style.display = 'none';
-    return;
-  }
-  const filtered = skills.filter(skill => skill.toLowerCase().includes(val));
-  if (filtered.length === 0) {
-    autocompleteList.style.display = 'none';
-    return;
-  }
-  filtered.forEach(skill => {
-    const li = document.createElement('li');
-    li.textContent = skill;
-    li.style.padding = '0.6em 1em';
-    li.style.cursor = 'pointer';
-    li.addEventListener('mousedown', function() {
-      searchInput.value = skill;
-      autocompleteList.style.display = 'none';
-      placeholderAnim.style.display = 'none';
+    if (document.activeElement !== searchInput && searchInput) {
+        placeholderInterval = setInterval(animatePlaceholder, 2000);
+        animatePlaceholder();
+    }
+    
+    if(searchInput) {
+        searchInput.addEventListener('focus', () => {
+            clearInterval(placeholderInterval);
+            if (placeholderAnim) placeholderAnim.style.display = 'none';
+        });
+
+        searchInput.addEventListener('blur', () => {
+            if (!searchInput.value) {
+                if (placeholderAnim) placeholderAnim.style.display = 'block';
+                clearInterval(placeholderInterval);
+                placeholderInterval = setInterval(animatePlaceholder, 2000);
+            }
+        });
+
+        searchInput.addEventListener('input', function() {
+            const val = this.value.trim().toLowerCase();
+            autocompleteList.innerHTML = '';
+            if (!val) {
+                autocompleteList.style.display = 'none';
+                removeHighlights();
+                return;
+            }
+            const filtered = skills.filter(skill => skill.toLowerCase().includes(val));
+            if (filtered.length === 0) {
+                autocompleteList.style.display = 'none';
+                return;
+            }
+            filtered.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                li.addEventListener('mousedown', function() {
+                    searchInput.value = skill;
+                    autocompleteList.style.display = 'none';
+                    highlightSkill(skill);
+                });
+                autocompleteList.appendChild(li);
+            });
+            autocompleteList.style.display = 'block';
+        });
+        
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                autocompleteList.style.display = 'none';
+                highlightSkill(this.value);
+            }
+        });
+    }
+
+
+    document.addEventListener('click', function(e) {
+        if (e.target !== searchInput) {
+            if(autocompleteList) autocompleteList.style.display = 'none';
+        }
     });
-    autocompleteList.appendChild(li);
-  });
-  autocompleteList.style.display = 'block';
-});
 
-// Hide dropdown on click away
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('#skillSearch')) {
-    autocompleteList.style.display = 'none';
-    if (!searchInput.value) placeholderAnim.style.display = 'block';
-  }
+    function highlightSkill(skill) {
+        removeHighlights();
+        if (!skill || skill.trim() === '') return;
+        const searchTerm = skill.toLowerCase();
+        let firstMatch = null;
+        allKeywords.forEach(span => {
+            if (span.textContent.toLowerCase().includes(searchTerm)) {
+                span.classList.add('highlight');
+                if (!firstMatch) { firstMatch = span; }
+            }
+        });
+        if (firstMatch) {
+            firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function removeHighlights() {
+        allKeywords.forEach(span => {
+            span.classList.remove('highlight');
+        });
+    }
 });
 </script>
 </body>
