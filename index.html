@@ -157,6 +157,17 @@
       </div>
     </section>
     <section>
+  <h2>Search My Skills</h2>
+  <div style="position:relative;max-width:400px;margin:auto;">
+    <input id="skillSearch" type="text" placeholder="Type to search skills..." 
+      style="width:100%;padding:0.8em 1em;font-size:1.1em;border:2px solid #234080;border-radius:8px;box-shadow:0 2px 8px rgba(35,64,128,0.05);margin-bottom:0;" autocomplete="off">
+    <ul id="autocompleteList" style="list-style:none;position:absolute;left:0;right:0;top:110%;background:#fff;border:1px solid #e3e6ea;border-radius:7px;box-shadow:0 2px 12px rgba(35,64,128,0.07);padding:0;margin:0;z-index:10;display:none;"></ul>
+    <!-- Animated placeholder -->
+    <div id="placeholderAnim" style="position:absolute;bottom:12px;left:14px;font-size:1.07em;color:#234080;pointer-events:none;transition:bottom 0.7s;">
+    </div>
+  </div>
+</section>
+    <section>
       <h2>Professional Experience</h2>
       <table>
         <thead>
@@ -302,5 +313,69 @@
   <footer>
     &copy; 2025 Harsh Kashyap. Professional Portfolio.
   </footer>
+  <script>
+const skills = [
+  "Python", "SQL", "R", "JavaScript", "Power BI", "Tableau", "Looker Studio",
+  "Data Analysis", "MIS", "Business Analytics", "Web App Development",
+  "React", "ERP Integration", "Reporting Automation", "Git", "Dashboard Design"
+];
+
+// Animated placeholder cycling
+const placeholderAnim = document.getElementById('placeholderAnim');
+const searchInput = document.getElementById('skillSearch');
+let skillIndex = 0;
+function showNextSkill() {
+  placeholderAnim.textContent = skills[skillIndex];
+  placeholderAnim.style.bottom = '-32px';
+  setTimeout(() => {
+    placeholderAnim.style.bottom = '12px';
+  }, 50);
+  skillIndex = (skillIndex + 1) % skills.length;
+}
+setInterval(showNextSkill, 1700);
+showNextSkill();
+
+// Hide placeholder when typing/focused, show otherwise
+searchInput.addEventListener('focus', () => placeholderAnim.style.display = 'none');
+searchInput.addEventListener('blur', () => placeholderAnim.style.display = searchInput.value ? 'none' : 'block');
+searchInput.addEventListener('input', () => placeholderAnim.style.display = searchInput.value ? 'none' : 'block');
+
+// Autocomplete logic
+const autocompleteList = document.getElementById('autocompleteList');
+searchInput.addEventListener('input', function() {
+  const val = this.value.trim().toLowerCase();
+  autocompleteList.innerHTML = '';
+  if (!val) {
+    autocompleteList.style.display = 'none';
+    return;
+  }
+  const filtered = skills.filter(skill => skill.toLowerCase().includes(val));
+  if (filtered.length === 0) {
+    autocompleteList.style.display = 'none';
+    return;
+  }
+  filtered.forEach(skill => {
+    const li = document.createElement('li');
+    li.textContent = skill;
+    li.style.padding = '0.6em 1em';
+    li.style.cursor = 'pointer';
+    li.addEventListener('mousedown', function() {
+      searchInput.value = skill;
+      autocompleteList.style.display = 'none';
+      placeholderAnim.style.display = 'none';
+    });
+    autocompleteList.appendChild(li);
+  });
+  autocompleteList.style.display = 'block';
+});
+
+// Hide dropdown on click away
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#skillSearch')) {
+    autocompleteList.style.display = 'none';
+    if (!searchInput.value) placeholderAnim.style.display = 'block';
+  }
+});
+</script>
 </body>
 </html>
