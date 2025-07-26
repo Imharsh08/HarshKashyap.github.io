@@ -7,7 +7,7 @@
   <style>
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; /* Adjust based on nav height */
+      scroll-padding-top: 70px; /* Adjust based on nav height */
     }
     body {
       font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
@@ -32,11 +32,13 @@
       color: #c6d4ff;
       margin-bottom: 1em;
       letter-spacing: 1px;
+      line-height: 1.5;
     }
     .contact {
       font-size: 1.05em;
       margin-bottom: 1.2em;
       text-align: center;
+      line-height: 1.8;
     }
     .contact a {
       color: #fff;
@@ -44,7 +46,7 @@
       font-weight: 600;
       margin: 0 0.5em;
     }
-    .contact .divider {
+    .contact .divider, .subtitle .divider {
       color: #bdbdbd;
       margin: 0 0.5em;
     }
@@ -113,10 +115,14 @@
       padding: 0;
       line-height: 1.6;
     }
+    .badge-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
     .badge-list img {
       height: 28px;
-      margin: 0.25em 0.4em 0.25em 0;
-      vertical-align: middle;
+      margin: 0;
     }
     .summary {
       font-size: 1.09em;
@@ -189,27 +195,109 @@
         background: #f3f6fa;
      }
 
+    /* --- Mobile Friendliness --- */
     @media (max-width: 768px) {
         html { scroll-padding-top: 60px; }
+        
+        header h1 { font-size: 2.1rem; }
+        .subtitle { font-size: 1.1rem; }
+        main {
+            padding: 1.5rem;
+            margin: 1.5rem auto;
+        }
+
         #navbar {
             padding: 0.5rem;
             overflow-x: auto;
             white-space: nowrap;
-            justify-content: flex-start;
-            text-align: left;
+            -webkit-overflow-scrolling: touch;
         }
         #navbar a {
+            display: inline-block;
             margin: 0 0.8rem;
             font-size: 1em;
         }
+
+        /* Responsive Table for Experience Section */
+        #experience table, 
+        #experience thead, 
+        #experience tbody, 
+        #experience th, 
+        #experience td, 
+        #experience tr {
+            display: block;
+        }
+
+        #experience thead {
+            display: none; /* Hide table headers on mobile */
+        }
+
+        #experience tr {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        #experience td {
+            border: none;
+            border-bottom: 0;
+            position: relative;
+            padding: 0.2rem 0;
+            text-align: left; /* Reset text-align for card layout */
+        }
+
+        #experience td::before {
+            display: none; /* Remove the old label style */
+        }
+        
+        /* Style each cell as part of the card */
+        #experience td[data-label="Role"] {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #234080;
+            padding-bottom: 0.25rem;
+        }
+        
+        #experience td[data-label="Organization"] {
+            font-weight: 600;
+            color: #374151;
+            padding-bottom: 0.25rem;
+        }
+        
+        #experience td[data-label="Tenure"] {
+            font-size: 0.9em;
+            color: #6b7280;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        #experience td[data-label="Contributions"] {
+            padding-top: 0.5rem;
+        }
+        
+        #experience td[data-label="Contributions"] ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
     }
 
-    @media (max-width: 600px) {
-      main { padding: 1.5rem 1rem; }
-      header { padding: 1.5rem 1rem; }
-      header h1 { font-size: 2rem; }
-      .subtitle { font-size: 1.1rem; }
-      th, td { font-size: 0.95em; }
+    @media (max-width: 480px) {
+        header { padding: 1.5rem 1rem; }
+        header h1 { font-size: 1.8rem; }
+        .subtitle span.divider { display: none; }
+        .subtitle span { display: block; margin-bottom: 0.25rem; }
+        main { padding: 1rem; margin: 1rem auto; }
+
+        .contact a, .contact .divider {
+            display: block;
+            margin: 0.3rem 0;
+        }
+        .contact .divider {
+            display: none;
+        }
     }
   </style>
 </head>
@@ -217,12 +305,12 @@
   <header>
     <h1>Harsh Kashyap</h1>
     <div class="subtitle">
-      Data Analyst &nbsp;|&nbsp; MIS Executive &nbsp;|&nbsp; Business Analyst &nbsp;|&nbsp; Web App Developer
+      <span>Data Analyst</span> <span class="divider">|</span> <span>MIS Executive</span> <span class="divider">|</span> <span>Business Analyst</span> <span class="divider">|</span> <span>Web App Developer</span>
     </div>
     <div class="contact">
-      📍 Meerut, Uttar Pradesh, India
+      <a href="#">📍 Meerut, Uttar Pradesh, India</a>
       <span class="divider">|</span>
-      📧 <a href="mailto:imharsh080@gmail.com">imharsh080@gmail.com</a>
+      <a href="mailto:imharsh080@gmail.com">📧 imharsh080@gmail.com</a>
       <span class="divider">|</span>
       <a href="https://www.linkedin.com/in/harsh-kashyap-bioinformatics" target="_blank">LinkedIn</a>
       <span class="divider">|</span>
@@ -268,10 +356,10 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>MIS/Data Analyst</strong></td>
-            <td>Mangla Rubber Technologies</td>
-            <td>Apr 2025 – Present</td>
-            <td>
+            <td data-label="Role"><strong>MIS/Data Analyst</strong></td>
+            <td data-label="Organization">Mangla Rubber Technologies</td>
+            <td data-label="Tenure">Apr 2025 – Present</td>
+            <td data-label="Contributions">
                 <ul>
                     <li>Engineered dynamic <span class="skill-keyword">dashboards</span> in <span class="skill-keyword">Looker Studio</span> and developed <span class="skill-keyword">ERP-integrated</span> <span class="skill-keyword">web applications</span>.</li>
                     <li>Utilized <span class="skill-keyword">React</span> and <span class="skill-keyword">Python</span> to enhance data accessibility for production and supply chain teams.</li>
@@ -279,10 +367,10 @@
             </td>
           </tr>
           <tr>
-            <td><strong>Business Analyst (Faculty)</strong></td>
-            <td>Gurukul Dev Rishi School, Meerut</td>
-            <td>Apr 2024 – Mar 2025</td>
-            <td>
+            <td data-label="Role"><strong>Business Analyst (Faculty)</strong></td>
+            <td data-label="Organization">Gurukul Dev Rishi School, Meerut</td>
+            <td data-label="Tenure">Apr 2024 – Mar 2025</td>
+            <td data-label="Contributions">
                 <ul>
                     <li>Streamlined academic <span class="skill-keyword">MIS</span> reporting and data management processes.</li>
                     <li>Led the documentation and data strategy for a successful CBSE affiliation.</li>
@@ -290,10 +378,10 @@
             </td>
           </tr>
           <tr>
-            <td><strong>Area Sales Manager</strong><br><em>(Concurrent Role)</em></td>
-            <td>K12 Techno Services Pvt. Ltd.</td>
-            <td>Jul 2021 – Sep 2022</td>
-            <td>
+            <td data-label="Role"><strong>Area Sales Manager</strong><br><em>(Concurrent Role)</em></td>
+            <td data-label="Organization">K12 Techno Services Pvt. Ltd.</td>
+            <td data-label="Tenure">Jul 2021 – Sep 2022</td>
+            <td data-label="Contributions">
                  <ul>
                     <li>Analyzed regional sales data to identify key growth opportunities.</li>
                     <li>Contributed to a 15% improvement in client engagement strategies through data-driven insights.</li>
@@ -301,10 +389,10 @@
             </td>
           </tr>
            <tr>
-            <td><strong>Data Analyst</strong></td>
-            <td>Dept. of Excise, Uttar Pradesh</td>
-            <td>Apr 2020 – Mar 2024</td>
-            <td>
+            <td data-label="Role"><strong>Data Analyst</strong></td>
+            <td data-label="Organization">Dept. of Excise, Uttar Pradesh</td>
+            <td data-label="Tenure">Apr 2020 – Mar 2024</td>
+            <td data-label="Contributions">
                 <ul>
                     <li>Led <span class="skill-keyword">data analysis</span> for state-wide sales operations.</li>
                     <li>Developed automated reports using <span class="skill-keyword">SQL</span> and advanced <span class="skill-keyword">Excel</span>, improving reporting transparency by 85%.</li>
@@ -312,10 +400,10 @@
             </td>
           </tr>
           <tr>
-            <td><strong>Database Administrator</strong></td>
-            <td>Simbhaoli Sugars Ltd.</td>
-            <td>Apr 2019 – Mar 2020</td>
-            <td>
+            <td data-label="Role"><strong>Database Administrator</strong></td>
+            <td data-label="Organization">Simbhaoli Sugars Ltd.</td>
+            <td data-label="Tenure">Apr 2019 – Mar 2020</td>
+            <td data-label="Contributions">
                 <ul>
                     <li>Managed and maintained <span class="skill-keyword">ERP</span>-linked <span class="skill-keyword">SQL</span> databases for a large-scale manufacturing unit.</li>
                     <li>Generated regular <span class="skill-keyword">business intelligence</span> reports to support management decisions.</li>
