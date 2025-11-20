@@ -63,6 +63,7 @@ I am a <b>Bioinformatician</b> and <b>Data Analyst</b> driven by scientific curi
 - 🤖 **Thesis Project**  
   <i>AI-Based Virtual Assistant for Bioinformatics Researchers</i>  
   Built with Botpress & ML for advanced biological data navigation.
+  [Read](https://drive.google.com/file/d/10T8gu0mfvD0QXqDkzO4b_XLp_DLumFyX/view?usp=drivesdk)
 
 - 💡 **Featured GitHub Project**  
   [Personal Portfolio & Blog](https://github.com/Imharsh08/HarshKashyap.github.io)
