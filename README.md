@@ -56,10 +56,6 @@ I am a <b>Bioinformatician</b> and <b>Data Analyst</b> driven by scientific curi
 
 ## 🧪 Featured Research & Projects
 
-- 🧬 **[Research Paper]**  
-  _Screening of Phytochemicals from Derris indica for Antimycobacterial Potential_  
-  [Read Publication](http://dx.doi.org/10.13005/bbra/3142) (Published in <i>Biosciences, Biotechnology Research Asia</i>)
-
 - 🤖 **Thesis Project**  
   <i>AI-Based Virtual Assistant for Bioinformatics Researchers</i>  
   Built with Botpress & ML for advanced biological data navigation.
